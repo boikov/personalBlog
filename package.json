@@ -4,11 +4,13 @@
   "description": "Personal blog",
   "main": "server/index.js",
   "scripts": {
-    "start": "node ./server/index.js"
+    "start": "node ./server/index.js",
+    "build":"webpack",
+    "buildWatcher":"webpack --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/boikov/personalBlog.git"
+    "url": "git+https://github.com/boykovdmitriy/personalBlog.git"
   },
   "keywords": [
     "blog",
@@ -18,10 +20,42 @@
   "author": "Boykov D.A.",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/boikov/personalBlog/issues"
+    "url": "https://github.com/boykovdmitriy/personalBlog/issues"
   },
-  "homepage": "https://github.com/boikov/personalBlog#readme",
+  "homepage": "https://github.com/boykovdmitriy/personalBlog#readme",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "@angular/upgrade": "2.0.0",
+    "core-js": "^2.4.0",
+    "rxjs": "5.0.0-beta.8",
+    "zone.js": "~0.6.12",
+    "autoprefixer-loader": "^3.2.0",
+    "clean-webpack-plugin": "^0.1.9",
+    "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "img-loader": "^1.2.2",
+    "imports-loader": "^0.6.5",
+    "node-sass": "^3.7.0",
+    "path": "^0.12.7",
+    "sass-loader": "^3.2.0",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "tslint-loader": "^2.1.4",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
