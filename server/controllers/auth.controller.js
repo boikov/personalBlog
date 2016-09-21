@@ -12,22 +12,14 @@ var jwtSecret  = 'asdasdadas';
 router.post('/authenticate', bodyParser.JSON, function (req, res) {
 	User.authorization(req.body.email, req.body.password, function (err, user) {
 		if (err) {
+			res.status(500).send(err);
+		}
+		if (user) {
 			res.json({
-				type: false,
-				data: "Error occured: " + err
+				type : true,
+				token: user.token
 			});
-		} else {
-			if (user) {
-				res.json({
-					type : true,
-					token: user.token
-				});
-			} else {
-				res.json({
-					type: false,
-					data: "Incorrect email/password"
-				});
-			}
+		} else {res.status(404).send("Incorrect password/email");
 		}
 	});
 });
@@ -35,26 +27,19 @@ router.post('/authenticate', bodyParser.JSON, function (req, res) {
 router.post('/signin', bodyParser.JSON, function (req, res) {
 	User.create(req.body.email, req.body.password, function (err, user) {
 		if (err) {
-			res.json({
-				type: false,
-				data: "Error occured: " + err
-			});
-		} else {
-			if (user) {
-				var token = jwt.sign(user, jwtSecret);
-				User.setToken(user, token, function (err, user1) {
-					res.json({
-						type : true,
-						token: user1.token
-					});
-				});
-
-			} else {
+			res.status(500).send(err);
+		}
+		if (user) {
+			var token = jwt.sign(user, jwtSecret);
+			User.setToken(user, token, function (err, user1) {
 				res.json({
-					type: false,
-					data: "User already exists!"
+					type : true,
+					token: user1.token
 				});
-			}
+			});
+
+		} else {
+			res.status(403).send("User already exist");
 		}
 	});
 });

@@ -15,11 +15,11 @@ module.exports = {
     devtool: "source-map",
     entry: {
         "app": "./client/boot.ts",
-        "styles": "./client/sass/application.scss"
+        /*"styles": "./client/sass/application.scss"*/
     },
     output: {
         "filename": "[name].js",
-        "publicPath": "./public/",
+        "publicPath": "./",
         "path": dirPath("./public/")
     },
     resolve: {
@@ -35,10 +35,10 @@ module.exports = {
                 test: /\.ts/,
                 loader: "ts"
             },
-            {
+          /*  {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
+                loader: 'style!css!sass'
+            },*/
             {
                 test: /\.css$/,
                 loaders: ["style", "css"]

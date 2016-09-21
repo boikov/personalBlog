@@ -3,9 +3,10 @@
  */
 
 import { Component } from '@angular/core';
+import { AuthComponent } from "../auth/auth.component";
 
 @Component({
     selector: 'my-app',
-    template: '<h1>First page in my blog!</h1>'
+    template: '<auth-form></auth-form>',
 })
 export class AppComponent { }
