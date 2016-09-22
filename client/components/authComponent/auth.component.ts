@@ -20,7 +20,7 @@ export class AuthComponent {
 		this.authService.singIn(user)
 		    .subscribe((data)=> {
 			    this.result = data.token;
-		    });
+		    }, (err)=> {console.log(err)});
 	}
 
 	public auth(form: NgForm) {
@@ -28,6 +28,6 @@ export class AuthComponent {
 		this.authService.authentification(user)
 		    .subscribe((data)=> {
 			    console.log(data);
-		    });
+		    }, (err)=> {console.log(err)});
 	}
 }

@@ -6,6 +6,7 @@ var express     = require('express');
 var morgan      = require("morgan");
 var mongoose    = require("mongoose");
 var mongoConfig = require('./config/db.config');
+var serverConfig=require('./config/server.config');
 var routers     = require('./routers');
 var app         = express();
 
@@ -18,6 +19,6 @@ process.on('uncaughtException', function (err) {
 	console.log(err);
 });
 
-app.listen(5000, function () {
-	console.log("Server start on 5000 port");
+app.listen(serverConfig.port, function () {
+	console.log("Server start on "+serverConfig.port+" port");
 });

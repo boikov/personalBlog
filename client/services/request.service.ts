@@ -14,11 +14,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class RequestService {
-	private options: RequestOptions;
 
 	constructor(private http: Http) {
-		let header   = new Headers({ 'Content-Type': 'application/json' });
-		this.options = new RequestOptions({ headers: header });
 	}
 
 	get<T>(url: string): Observable<T> {
@@ -27,8 +24,13 @@ export class RequestService {
 	}
 
 	post<T>(url: string, data: T): Observable<T> {
-		return this.http.post(url, JSON.stringify(data), this.options)
+		return this.http.post(url, JSON.stringify(data), this.getJsonHeader())
 		           .map((res: Response)=>{ return this.extractData(res) as T;});
+	}
+
+	private getJsonHeader():RequestOptions{
+		let header   = new Headers({ 'Content-Type': 'application/json' });
+		return new RequestOptions({ headers: header });
 	}
 
 	private extractData(res: Response) {
