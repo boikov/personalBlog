@@ -48,10 +48,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(669);
+	var content = __webpack_require__(370);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(671)(content, {});
+	var update = __webpack_require__(372)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -69,22 +69,22 @@
 
 /***/ },
 
-/***/ 669:
+/***/ 370:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(670)();
+	exports = module.exports = __webpack_require__(371)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 100%; }\n", ""]);
+	exports.push([module.id, ".custom-footer {\n  background: crimson;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 60px;\n  width: 100%;\n  padding: 0; }\n  .custom-footer .content-container {\n    float: right; }\n    .custom-footer .content-container p {\n      color: chocolate; }\n\n.custom-header {\n  position: fixed;\n  display: flex;\n  justify-content: center;\n  overflow: auto;\n  height: 40px;\n  background: crimson;\n  padding: 0;\n  width: 100%; }\n  .custom-header .content-container {\n    align-items: center; }\n    .custom-header .content-container h1 {\n      margin: 0;\n      color: chocolate; }\n\nhtml, body {\n  margin: 0; }\n\nhtml {\n  position: relative;\n  min-height: 100%; }\n\nbody {\n  margin: 0 0 60px; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
 
-/***/ 670:
+/***/ 371:
 /***/ function(module, exports) {
 
 	/*
@@ -141,7 +141,7 @@
 
 /***/ },
 
-/***/ 671:
+/***/ 372:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
