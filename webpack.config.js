@@ -15,7 +15,7 @@ module.exports = {
     devtool: "source-map",
     entry: {
         "app": "./client/boot.ts",
-        /*"styles": "./client/sass/application.scss"*/
+        "styles": "./client/sass/application.scss"
     },
     output: {
         "filename": "[name].js",
@@ -35,10 +35,10 @@ module.exports = {
                 test: /\.ts/,
                 loader: "ts"
             },
-          /*  {
+            {
                 test: /\.scss$/,
-                loader: 'style!css!sass'
-            },*/
+                loaders: ["style", "css", "sass"]
+            },
             {
                 test: /\.css$/,
                 loaders: ["style", "css"]

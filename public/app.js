@@ -52,7 +52,7 @@
 	__webpack_require__(308);
 	__webpack_require__(310);
 	var platform_browser_dynamic_1 = __webpack_require__(311);
-	var app_module_1 = __webpack_require__(669);
+	var app_module_1 = __webpack_require__(333);
 	platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 
 
@@ -44567,9 +44567,118 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 333 */,
-/* 334 */,
-/* 335 */,
+/* 333 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by boykovdmitriy on 9/18/2016.
+	 */
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(313);
+	var platform_browser_1 = __webpack_require__(331);
+	var app_component_1 = __webpack_require__(334);
+	var auth_module_1 = __webpack_require__(335);
+	var AppModule = (function () {
+	    function AppModule() {
+	    }
+	    AppModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule, auth_module_1.AuthModule],
+	            declarations: [app_component_1.AppComponent],
+	            bootstrap: [app_component_1.AppComponent],
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], AppModule);
+	    return AppModule;
+	}());
+	exports.AppModule = AppModule;
+
+
+/***/ },
+/* 334 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by boykovdmitriy on 9/18/2016.
+	 */
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(313);
+	var AppComponent = (function () {
+	    function AppComponent() {
+	    }
+	    AppComponent = __decorate([
+	        core_1.Component({
+	            selector: 'my-app',
+	            template: '<auth-form></auth-form>',
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], AppComponent);
+	    return AppComponent;
+	}());
+	exports.AppComponent = AppComponent;
+
+
+/***/ },
+/* 335 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by boiko on 9/22/2016.
+	 */
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(313);
+	var platform_browser_1 = __webpack_require__(331);
+	var forms_1 = __webpack_require__(336);
+	var auth_component_1 = __webpack_require__(340);
+	var auth_service_1 = __webpack_require__(341);
+	var request_service_1 = __webpack_require__(342);
+	var http_1 = __webpack_require__(343);
+	var AuthModule = (function () {
+	    function AuthModule() {
+	    }
+	    AuthModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
+	            declarations: [auth_component_1.AuthComponent],
+	            bootstrap: [auth_component_1.AuthComponent],
+	            providers: [request_service_1.RequestService, auth_service_1.AuthService],
+	            exports: [auth_component_1.AuthComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], AuthModule);
+	    return AuthModule;
+	}());
+	exports.AuthModule = AuthModule;
+
+
+/***/ },
 /* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -49469,7 +49578,57 @@
 	//# sourceMappingURL=PromiseObservable.js.map
 
 /***/ },
-/* 340 */,
+/* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by boiko on 9/22/2016.
+	 */
+	var core_1 = __webpack_require__(313);
+	var auth_service_1 = __webpack_require__(341);
+	var AuthComponent = (function () {
+	    function AuthComponent(authService) {
+	        this.authService = authService;
+	        this.result = "";
+	    }
+	    AuthComponent.prototype.registerUser = function (form) {
+	        var _this = this;
+	        var user = form.value;
+	        this.authService.singIn(user)
+	            .subscribe(function (data) {
+	            _this.result = data.token;
+	        }, function (err) { console.log(err); });
+	    };
+	    AuthComponent.prototype.auth = function (form) {
+	        var user = form.value;
+	        this.authService.authentification(user)
+	            .subscribe(function (data) {
+	            console.log(data);
+	        }, function (err) { console.log(err); });
+	    };
+	    AuthComponent = __decorate([
+	        core_1.Component({
+	            selector: 'auth-form',
+	            templateUrl: __webpack_require__(668)
+	        }), 
+	        __metadata('design:paramtypes', [auth_service_1.AuthService])
+	    ], AuthComponent);
+	    return AuthComponent;
+	}());
+	exports.AuthComponent = AuthComponent;
+
+
+/***/ },
 /* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -68724,171 +68883,7 @@
 	//# sourceMappingURL=AnimationFrameScheduler.js.map
 
 /***/ },
-/* 668 */,
-/* 669 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Created by boykovdmitriy on 9/18/2016.
-	 */
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(313);
-	var platform_browser_1 = __webpack_require__(331);
-	var app_component_1 = __webpack_require__(670);
-	var auth_module_1 = __webpack_require__(671);
-	var AppModule = (function () {
-	    function AppModule() {
-	    }
-	    AppModule = __decorate([
-	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule, auth_module_1.AuthModule],
-	            declarations: [app_component_1.AppComponent],
-	            bootstrap: [app_component_1.AppComponent],
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AppModule);
-	    return AppModule;
-	}());
-	exports.AppModule = AppModule;
-
-
-/***/ },
-/* 670 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Created by boykovdmitriy on 9/18/2016.
-	 */
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(313);
-	var AppComponent = (function () {
-	    function AppComponent() {
-	    }
-	    AppComponent = __decorate([
-	        core_1.Component({
-	            selector: 'my-app',
-	            template: '<auth-form></auth-form>',
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AppComponent);
-	    return AppComponent;
-	}());
-	exports.AppComponent = AppComponent;
-
-
-/***/ },
-/* 671 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Created by boiko on 9/22/2016.
-	 */
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(313);
-	var platform_browser_1 = __webpack_require__(331);
-	var forms_1 = __webpack_require__(336);
-	var auth_component_1 = __webpack_require__(672);
-	var auth_service_1 = __webpack_require__(341);
-	var request_service_1 = __webpack_require__(342);
-	var http_1 = __webpack_require__(343);
-	var AuthModule = (function () {
-	    function AuthModule() {
-	    }
-	    AuthModule = __decorate([
-	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
-	            declarations: [auth_component_1.AuthComponent],
-	            bootstrap: [auth_component_1.AuthComponent],
-	            providers: [request_service_1.RequestService, auth_service_1.AuthService],
-	            exports: [auth_component_1.AuthComponent]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AuthModule);
-	    return AuthModule;
-	}());
-	exports.AuthModule = AuthModule;
-
-
-/***/ },
-/* 672 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by boiko on 9/22/2016.
-	 */
-	var core_1 = __webpack_require__(313);
-	var auth_service_1 = __webpack_require__(341);
-	var AuthComponent = (function () {
-	    function AuthComponent(authService) {
-	        this.authService = authService;
-	        this.result = "";
-	    }
-	    AuthComponent.prototype.registerUser = function (form) {
-	        var _this = this;
-	        var user = form.value;
-	        this.authService.singIn(user)
-	            .subscribe(function (data) {
-	            _this.result = data.token;
-	        }, function (err) { console.log(err); });
-	    };
-	    AuthComponent.prototype.auth = function (form) {
-	        var user = form.value;
-	        this.authService.authentification(user)
-	            .subscribe(function (data) {
-	            console.log(data);
-	        }, function (err) { console.log(err); });
-	    };
-	    AuthComponent = __decorate([
-	        core_1.Component({
-	            selector: 'auth-form',
-	            templateUrl: __webpack_require__(673)
-	        }), 
-	        __metadata('design:paramtypes', [auth_service_1.AuthService])
-	    ], AuthComponent);
-	    return AuthComponent;
-	}());
-	exports.AuthComponent = AuthComponent;
-
-
-/***/ },
-/* 673 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "8c3ae3a1c3771ac3bcf1ba0d991a31a9.html";
