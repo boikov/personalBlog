@@ -9,11 +9,9 @@ var User             = require('../models/user.model');
 router.get('/me', ensureAuthorized, function (req, res) {
 	User.getUser(req.token, function (err, user) {
 		if (err) {
-			res.json({
-				type: false,
-				data: "Error occured: " + err
-			});
-		} else {
+			res.status(500).send(err);
+		}
+		if (user) {
 			res.json({
 				type: true,
 				data: {
@@ -21,7 +19,8 @@ router.get('/me', ensureAuthorized, function (req, res) {
 					id   : user._id
 				}
 			});
-		}
+		} else
+			res.status(404).send("User not found");
 	});
 });
 

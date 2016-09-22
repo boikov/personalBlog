@@ -1,0 +1,17 @@
+@import '../_variables.scss';
+
+.custom-footer{
+	background: crimson;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: $footer-height;
+	width: 100%;
+	padding: 0;
+	.content-container{
+		float: right;
+		p{
+			color: chocolate;
+		}
+	}
+}
