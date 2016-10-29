@@ -2,14 +2,17 @@
  * Created by boykovdmitriy on 9/18/2016.
  */
 
-import { Component } from '@angular/core';
+import {
+	Component,
+	ViewEncapsulation
+} from '@angular/core';
 
 @Component({
-	           selector: 'my-app',
-	           template: `
-	<custom-header></custom-header>
-	<router-outlet></router-outlet>
-	<custom-footer></custom-footer>
-`,
+	           selector     : 'body',
+	           template     : '<app></app>',
+	           styles       : [String(require("./app.style.scss"))],
+	           encapsulation: ViewEncapsulation.None
+
            })
-export class AppComponent {}
+export class AppComponent {
+}

@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./";
+/******/ 	__webpack_require__.p = "./public";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -7634,6 +7634,15 @@
 	    (factory());
 	}(this, (function () { 'use strict';
 	
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
+	
+	
 	var Zone$1 = (function (global) {
 	    if (global.Zone) {
 	        throw new Error('Zone already loaded.');
@@ -7644,37 +7653,46 @@
 	            this._parent = parent;
 	            this._name = zoneSpec ? zoneSpec.name || 'unnamed' : '<root>';
 	            this._properties = zoneSpec && zoneSpec.properties || {};
-	            this._zoneDelegate = new ZoneDelegate(this, this._parent && this._parent._zoneDelegate, zoneSpec);
+	            this._zoneDelegate =
+	                new ZoneDelegate(this, this._parent && this._parent._zoneDelegate, zoneSpec);
 	        }
 	        Zone.assertZonePatched = function () {
 	            if (global.Promise !== ZoneAwarePromise) {
-	                throw new Error("Zone.js has detected that ZoneAwarePromise `(window|global).Promise` " +
-	                    "has been overwritten.\n" +
-	                    "Most likely cause is that a Promise polyfill has been loaded " +
-	                    "after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. " +
-	                    "If you must load one, do so before loading zone.js.)");
+	                throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' +
+	                    'has been overwritten.\n' +
+	                    'Most likely cause is that a Promise polyfill has been loaded ' +
+	                    'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' +
+	                    'If you must load one, do so before loading zone.js.)');
 	            }
 	        };
 	        Object.defineProperty(Zone, "current", {
-	            get: function () { return _currentZone; },
+	            get: function () {
+	                return _currentZone;
+	            },
 	            enumerable: true,
 	            configurable: true
 	        });
 	        
 	        Object.defineProperty(Zone, "currentTask", {
-	            get: function () { return _currentTask; },
+	            get: function () {
+	                return _currentTask;
+	            },
 	            enumerable: true,
 	            configurable: true
 	        });
 	        
 	        Object.defineProperty(Zone.prototype, "parent", {
-	            get: function () { return this._parent; },
+	            get: function () {
+	                return this._parent;
+	            },
 	            enumerable: true,
 	            configurable: true
 	        });
 	        
 	        Object.defineProperty(Zone.prototype, "name", {
-	            get: function () { return this._name; },
+	            get: function () {
+	                return this._name;
+	            },
 	            enumerable: true,
 	            configurable: true
 	        });
@@ -7745,8 +7763,8 @@
 	        Zone.prototype.runTask = function (task, applyThis, applyArgs) {
 	            task.runCount++;
 	            if (task.zone != this)
-	                throw new Error('A task can only be run in the zone which created it! (Creation: ' +
-	                    task.zone.name + '; Execution: ' + this.name + ')');
+	                throw new Error('A task can only be run in the zone which created it! (Creation: ' + task.zone.name +
+	                    '; Execution: ' + this.name + ')');
 	            var previousTask = _currentTask;
 	            _currentTask = task;
 	            var oldZone = _currentZone;
@@ -7795,40 +7813,51 @@
 	            this._parentDelegate = parentDelegate;
 	            this._forkZS = zoneSpec && (zoneSpec && zoneSpec.onFork ? zoneSpec : parentDelegate._forkZS);
 	            this._forkDlgt = zoneSpec && (zoneSpec.onFork ? parentDelegate : parentDelegate._forkDlgt);
-	            this._interceptZS = zoneSpec && (zoneSpec.onIntercept ? zoneSpec : parentDelegate._interceptZS);
-	            this._interceptDlgt = zoneSpec && (zoneSpec.onIntercept ? parentDelegate : parentDelegate._interceptDlgt);
+	            this._interceptZS =
+	                zoneSpec && (zoneSpec.onIntercept ? zoneSpec : parentDelegate._interceptZS);
+	            this._interceptDlgt =
+	                zoneSpec && (zoneSpec.onIntercept ? parentDelegate : parentDelegate._interceptDlgt);
 	            this._invokeZS = zoneSpec && (zoneSpec.onInvoke ? zoneSpec : parentDelegate._invokeZS);
-	            this._invokeDlgt = zoneSpec && (zoneSpec.onInvoke ? parentDelegate : parentDelegate._invokeDlgt);
-	            this._handleErrorZS = zoneSpec && (zoneSpec.onHandleError ? zoneSpec : parentDelegate._handleErrorZS);
-	            this._handleErrorDlgt = zoneSpec && (zoneSpec.onHandleError ? parentDelegate : parentDelegate._handleErrorDlgt);
-	            this._scheduleTaskZS = zoneSpec && (zoneSpec.onScheduleTask ? zoneSpec : parentDelegate._scheduleTaskZS);
-	            this._scheduleTaskDlgt = zoneSpec && (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
-	            this._invokeTaskZS = zoneSpec && (zoneSpec.onInvokeTask ? zoneSpec : parentDelegate._invokeTaskZS);
-	            this._invokeTaskDlgt = zoneSpec && (zoneSpec.onInvokeTask ? parentDelegate : parentDelegate._invokeTaskDlgt);
-	            this._cancelTaskZS = zoneSpec && (zoneSpec.onCancelTask ? zoneSpec : parentDelegate._cancelTaskZS);
-	            this._cancelTaskDlgt = zoneSpec && (zoneSpec.onCancelTask ? parentDelegate : parentDelegate._cancelTaskDlgt);
+	            this._invokeDlgt =
+	                zoneSpec && (zoneSpec.onInvoke ? parentDelegate : parentDelegate._invokeDlgt);
+	            this._handleErrorZS =
+	                zoneSpec && (zoneSpec.onHandleError ? zoneSpec : parentDelegate._handleErrorZS);
+	            this._handleErrorDlgt =
+	                zoneSpec && (zoneSpec.onHandleError ? parentDelegate : parentDelegate._handleErrorDlgt);
+	            this._scheduleTaskZS =
+	                zoneSpec && (zoneSpec.onScheduleTask ? zoneSpec : parentDelegate._scheduleTaskZS);
+	            this._scheduleTaskDlgt =
+	                zoneSpec && (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
+	            this._invokeTaskZS =
+	                zoneSpec && (zoneSpec.onInvokeTask ? zoneSpec : parentDelegate._invokeTaskZS);
+	            this._invokeTaskDlgt =
+	                zoneSpec && (zoneSpec.onInvokeTask ? parentDelegate : parentDelegate._invokeTaskDlgt);
+	            this._cancelTaskZS =
+	                zoneSpec && (zoneSpec.onCancelTask ? zoneSpec : parentDelegate._cancelTaskZS);
+	            this._cancelTaskDlgt =
+	                zoneSpec && (zoneSpec.onCancelTask ? parentDelegate : parentDelegate._cancelTaskDlgt);
 	            this._hasTaskZS = zoneSpec && (zoneSpec.onHasTask ? zoneSpec : parentDelegate._hasTaskZS);
-	            this._hasTaskDlgt = zoneSpec && (zoneSpec.onHasTask ? parentDelegate : parentDelegate._hasTaskDlgt);
+	            this._hasTaskDlgt =
+	                zoneSpec && (zoneSpec.onHasTask ? parentDelegate : parentDelegate._hasTaskDlgt);
 	        }
 	        ZoneDelegate.prototype.fork = function (targetZone, zoneSpec) {
-	            return this._forkZS
-	                ? this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec)
-	                : new Zone(targetZone, zoneSpec);
+	            return this._forkZS ? this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec) :
+	                new Zone(targetZone, zoneSpec);
 	        };
 	        ZoneDelegate.prototype.intercept = function (targetZone, callback, source) {
-	            return this._interceptZS
-	                ? this._interceptZS.onIntercept(this._interceptDlgt, this.zone, targetZone, callback, source)
-	                : callback;
+	            return this._interceptZS ?
+	                this._interceptZS.onIntercept(this._interceptDlgt, this.zone, targetZone, callback, source) :
+	                callback;
 	        };
 	        ZoneDelegate.prototype.invoke = function (targetZone, callback, applyThis, applyArgs, source) {
-	            return this._invokeZS
-	                ? this._invokeZS.onInvoke(this._invokeDlgt, this.zone, targetZone, callback, applyThis, applyArgs, source)
-	                : callback.apply(applyThis, applyArgs);
+	            return this._invokeZS ?
+	                this._invokeZS.onInvoke(this._invokeDlgt, this.zone, targetZone, callback, applyThis, applyArgs, source) :
+	                callback.apply(applyThis, applyArgs);
 	        };
 	        ZoneDelegate.prototype.handleError = function (targetZone, error) {
-	            return this._handleErrorZS
-	                ? this._handleErrorZS.onHandleError(this._handleErrorDlgt, this.zone, targetZone, error)
-	                : true;
+	            return this._handleErrorZS ?
+	                this._handleErrorZS.onHandleError(this._handleErrorDlgt, this.zone, targetZone, error) :
+	                true;
 	        };
 	        ZoneDelegate.prototype.scheduleTask = function (targetZone, task) {
 	            try {
@@ -7854,12 +7883,13 @@
 	        };
 	        ZoneDelegate.prototype.invokeTask = function (targetZone, task, applyThis, applyArgs) {
 	            try {
-	                return this._invokeTaskZS
-	                    ? this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this.zone, targetZone, task, applyThis, applyArgs)
-	                    : task.callback.apply(applyThis, applyArgs);
+	                return this._invokeTaskZS ?
+	                    this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this.zone, targetZone, task, applyThis, applyArgs) :
+	                    task.callback.apply(applyThis, applyArgs);
 	            }
 	            finally {
-	                if (targetZone == this.zone && (task.type != 'eventTask') && !(task.data && task.data.isPeriodic)) {
+	                if (targetZone == this.zone && (task.type != 'eventTask') &&
+	                    !(task.data && task.data.isPeriodic)) {
 	                    this._updateTaskCount(task.type, -1);
 	                }
 	            }
@@ -7882,7 +7912,8 @@
 	            return value;
 	        };
 	        ZoneDelegate.prototype.hasTask = function (targetZone, isEmpty) {
-	            return this._hasTaskZS && this._hasTaskZS.onHasTask(this._hasTaskDlgt, this.zone, targetZone, isEmpty);
+	            return this._hasTaskZS &&
+	                this._hasTaskZS.onHasTask(this._hasTaskDlgt, this.zone, targetZone, isEmpty);
 	        };
 	        ZoneDelegate.prototype._updateTaskCount = function (type, count) {
 	            var counts = this._taskCounts;
@@ -7939,12 +7970,14 @@
 	                return this.data.handleId;
 	            }
 	            else {
-	                return this.toString();
+	                return Object.prototype.toString.call(this);
 	            }
 	        };
 	        return ZoneTask;
 	    }());
-	    function __symbol__(name) { return '__zone_symbol__' + name; }
+	    function __symbol__(name) {
+	        return '__zone_symbol__' + name;
+	    }
 	    
 	    var symbolSetTimeout = __symbol__('setTimeout');
 	    var symbolPromise = __symbol__('Promise');
@@ -7999,7 +8032,9 @@
 	                var _loop_1 = function() {
 	                    var uncaughtPromiseError = _uncaughtPromiseErrors.shift();
 	                    try {
-	                        uncaughtPromiseError.zone.runGuarded(function () { throw uncaughtPromiseError; });
+	                        uncaughtPromiseError.zone.runGuarded(function () {
+	                            throw uncaughtPromiseError;
+	                        });
 	                    }
 	                    catch (e) {
 	                        consoleError(e);
@@ -8015,8 +8050,12 @@
 	    function isThenable(value) {
 	        return value && value.then;
 	    }
-	    function forwardResolution(value) { return value; }
-	    function forwardRejection(rejection) { return ZoneAwarePromise.reject(rejection); }
+	    function forwardResolution(value) {
+	        return value;
+	    }
+	    function forwardRejection(rejection) {
+	        return ZoneAwarePromise.reject(rejection);
+	    }
 	    var symbolState = __symbol__('state');
 	    var symbolValue = __symbol__('value');
 	    var source = 'Promise.then';
@@ -8049,7 +8088,8 @@
 	                if (queue.length == 0 && state == REJECTED) {
 	                    promise[symbolState] = REJECTED_NO_CATCH;
 	                    try {
-	                        throw new Error("Uncaught (in promise): " + value);
+	                        throw new Error('Uncaught (in promise): ' + value +
+	                            (value && value.stack ? '\n' + value.stack : ''));
 	                    }
 	                    catch (e) {
 	                        var error_1 = e;
@@ -8113,9 +8153,16 @@
 	        ZoneAwarePromise.race = function (values) {
 	            var resolve;
 	            var reject;
-	            var promise = new this(function (res, rej) { resolve = res; reject = rej; });
-	            function onResolve(value) { promise && (promise = null || resolve(value)); }
-	            function onReject(error) { promise && (promise = null || reject(error)); }
+	            var promise = new this(function (res, rej) {
+	                _a = [res, rej], resolve = _a[0], reject = _a[1];
+	                var _a;
+	            });
+	            function onResolve(value) {
+	                promise && (promise = null || resolve(value));
+	            }
+	            function onReject(error) {
+	                promise && (promise = null || reject(error));
+	            }
 	            for (var _i = 0, values_1 = values; _i < values_1.length; _i++) {
 	                var value = values_1[_i];
 	                if (!isThenable(value)) {
@@ -8128,7 +8175,10 @@
 	        ZoneAwarePromise.all = function (values) {
 	            var resolve;
 	            var reject;
-	            var promise = new this(function (res, rej) { resolve = res; reject = rej; });
+	            var promise = new this(function (res, rej) {
+	                resolve = res;
+	                reject = rej;
+	            });
 	            var count = 0;
 	            var resolvedValues = [];
 	            for (var _i = 0, values_2 = values; _i < values_2.length; _i++) {
@@ -8175,13 +8225,14 @@
 	    global.Promise = ZoneAwarePromise;
 	    function patchThen(NativePromise) {
 	        var NativePromiseProtototype = NativePromise.prototype;
-	        var NativePromiseThen = NativePromiseProtototype[__symbol__('then')]
-	            = NativePromiseProtototype.then;
+	        var NativePromiseThen = NativePromiseProtototype[__symbol__('then')] =
+	            NativePromiseProtototype.then;
 	        NativePromiseProtototype.then = function (onResolve, onReject) {
 	            var nativePromise = this;
 	            return new ZoneAwarePromise(function (resolve, reject) {
 	                NativePromiseThen.call(nativePromise, resolve, reject);
-	            }).then(onResolve, onReject);
+	            })
+	                .then(onResolve, onReject);
 	        };
 	    }
 	    if (NativePromise) {
@@ -8198,7 +8249,8 @@
 	            }
 	            // ignore output to prevent error;
 	            fetchPromise.then(function () { return null; }, function () { return null; });
-	            if (fetchPromise.constructor != NativePromise) {
+	            if (fetchPromise.constructor != NativePromise &&
+	                fetchPromise.constructor != ZoneAwarePromise) {
 	                patchThen(fetchPromise.constructor);
 	            }
 	        }
@@ -8209,9 +8261,11 @@
 	})(typeof window === 'object' && window || typeof self === 'object' && self || global);
 	
 	/**
-	 * Suppress closure compiler errors about unknown 'process' variable
-	 * @fileoverview
-	 * @suppress {undefinedVars}
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
 	 */
 	var zoneSymbol = Zone['__symbol__'];
 	var _global$1 = typeof window === 'object' && window || typeof self === 'object' && self || global;
@@ -8246,10 +8300,7 @@
 	var isNode = (typeof process !== 'undefined' && {}.toString.call(process) === '[object process]');
 	var isBrowser = !isNode && !isWebWorker && !!(typeof window !== 'undefined' && window['HTMLElement']);
 	function patchProperty(obj, prop) {
-	    var desc = Object.getOwnPropertyDescriptor(obj, prop) || {
-	        enumerable: true,
-	        configurable: true
-	    };
+	    var desc = Object.getOwnPropertyDescriptor(obj, prop) || { enumerable: true, configurable: true };
 	    // A property descriptor cannot have getter/setter and be writable
 	    // deleting the writable and value properties avoids this error:
 	    //
@@ -8278,7 +8329,8 @@
 	            this[_prop] = null;
 	        }
 	    };
-	    // The getter would return undefined for unassigned properties but the default value of an unassigned property is null
+	    // The getter would return undefined for unassigned properties but the default value of an
+	    // unassigned property is null
 	    desc.get = function () {
 	        return this[_prop] || null;
 	    };
@@ -8312,9 +8364,7 @@
 	        for (var i = 0; i < eventTasks.length; i++) {
 	            var eventTask = eventTasks[i];
 	            var data = eventTask.data;
-	            if (data.handler === handler
-	                && data.useCapturing === capture
-	                && data.eventName === name) {
+	            if (data.handler === handler && data.useCapturing === capture && data.eventName === name) {
 	                if (remove) {
 	                    eventTasks.splice(i, 1);
 	                }
@@ -8367,13 +8417,14 @@
 	            // In cross site contexts (such as WebDriver frameworks like Selenium),
 	            // accessing the handler object here will cause an exception to be thrown which
 	            // will fail tests prematurely.
-	            validZoneHandler = handler && handler.toString() === "[object FunctionWrapper]";
+	            validZoneHandler = handler && handler.toString() === '[object FunctionWrapper]';
 	        }
 	        catch (e) {
 	            // Returning nothing here is fine, because objects in a cross-site context are unusable
 	            return;
 	        }
-	        // Ignore special listeners of IE11 & Edge dev tools, see https://github.com/angular/zone.js/issues/150
+	        // Ignore special listeners of IE11 & Edge dev tools, see
+	        // https://github.com/angular/zone.js/issues/150
 	        if (!delegate || validZoneHandler) {
 	            return target[addFnSymbol](eventName, handler, useCapturing);
 	        }
@@ -8454,7 +8505,8 @@
 	            case 4:
 	                this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2], a[3]);
 	                break;
-	            default: throw new Error('Arg list too long.');
+	            default:
+	                throw new Error('Arg list too long.');
 	        }
 	    };
 	    var instance = new OriginalClass(function () { });
@@ -8506,7 +8558,7 @@
 	}
 	function patchMethod(target, name, patchFn) {
 	    var proto = target;
-	    while (proto && !proto.hasOwnProperty(name)) {
+	    while (proto && Object.getOwnPropertyNames(proto).indexOf(name) === -1) {
 	        proto = Object.getPrototypeOf(proto);
 	    }
 	    if (!proto && target[name]) {
@@ -8522,36 +8574,90 @@
 	    return delegate;
 	}
 	
-	var WTF_ISSUE_555 = 'Anchor,Area,Audio,BR,Base,BaseFont,Body,Button,Canvas,Content,DList,Directory,Div,Embed,FieldSet,Font,Form,Frame,FrameSet,HR,Head,Heading,Html,IFrame,Image,Input,Keygen,LI,Label,Legend,Link,Map,Marquee,Media,Menu,Meta,Meter,Mod,OList,Object,OptGroup,Option,Output,Paragraph,Pre,Progress,Quote,Script,Select,Source,Span,Style,TableCaption,TableCell,TableCol,Table,TableRow,TableSection,TextArea,Title,Track,UList,Unknown,Video';
-	var NO_EVENT_TARGET = 'ApplicationCache,EventSource,FileReader,InputMethodContext,MediaController,MessagePort,Node,Performance,SVGElementInstance,SharedWorker,TextTrack,TextTrackCue,TextTrackList,WebKitNamedFlow,Window,Worker,WorkerGlobalScope,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload,IDBRequest,IDBOpenDBRequest,IDBDatabase,IDBTransaction,IDBCursor,DBIndex'.split(',');
-	var EVENT_TARGET = 'EventTarget';
-	function eventTargetPatch(_global) {
-	    var apis = [];
-	    var isWtf = _global['wtf'];
-	    if (isWtf) {
-	        // Workaround for: https://github.com/google/tracing-framework/issues/555
-	        apis = WTF_ISSUE_555.split(',').map(function (v) { return 'HTML' + v + 'Element'; }).concat(NO_EVENT_TARGET);
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
+	function patchTimer(window, setName, cancelName, nameSuffix) {
+	    var setNative = null;
+	    var clearNative = null;
+	    setName += nameSuffix;
+	    cancelName += nameSuffix;
+	    var tasksByHandleId = {};
+	    function scheduleTask(task) {
+	        var data = task.data;
+	        data.args[0] = function () {
+	            task.invoke.apply(this, arguments);
+	            delete tasksByHandleId[data.handleId];
+	        };
+	        data.handleId = setNative.apply(window, data.args);
+	        tasksByHandleId[data.handleId] = task;
+	        return task;
 	    }
-	    else if (_global[EVENT_TARGET]) {
-	        apis.push(EVENT_TARGET);
+	    function clearTask(task) {
+	        delete tasksByHandleId[task.data.handleId];
+	        return clearNative(task.data.handleId);
 	    }
-	    else {
-	        // Note: EventTarget is not available in all browsers,
-	        // if it's not available, we instead patch the APIs in the IDL that inherit from EventTarget
-	        apis = NO_EVENT_TARGET;
-	    }
-	    for (var i = 0; i < apis.length; i++) {
-	        var type = _global[apis[i]];
-	        patchEventTargetMethods(type && type.prototype);
-	    }
+	    setNative =
+	        patchMethod(window, setName, function (delegate) { return function (self, args) {
+	            if (typeof args[0] === 'function') {
+	                var zone = Zone.current;
+	                var options = {
+	                    handleId: null,
+	                    isPeriodic: nameSuffix === 'Interval',
+	                    delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 : null,
+	                    args: args
+	                };
+	                var task = zone.scheduleMacroTask(setName, args[0], options, scheduleTask, clearTask);
+	                if (!task) {
+	                    return task;
+	                }
+	                // Node.js must additionally support the ref and unref functions.
+	                var handle = task.data.handleId;
+	                if (handle.ref && handle.unref) {
+	                    task.ref = handle.ref.bind(handle);
+	                    task.unref = handle.unref.bind(handle);
+	                }
+	                return task;
+	            }
+	            else {
+	                // cause an error by calling it directly.
+	                return delegate.apply(window, args);
+	            }
+	        }; });
+	    clearNative =
+	        patchMethod(window, cancelName, function (delegate) { return function (self, args) {
+	            var task = typeof args[0] === 'number' ? tasksByHandleId[args[0]] : args[0];
+	            if (task && typeof task.type === 'string') {
+	                if (task.cancelFn && task.data.isPeriodic || task.runCount === 0) {
+	                    // Do not cancel already canceled functions
+	                    task.zone.cancelTask(task);
+	                }
+	            }
+	            else {
+	                // cause an error by calling it directly.
+	                delegate.apply(window, args);
+	            }
+	        }; });
 	}
 	
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
 	/*
 	 * This is necessary for Chrome and Chrome mobile, to enable
 	 * things like redefining `createdCallback` on an element.
 	 */
 	var _defineProperty = Object[zoneSymbol('defineProperty')] = Object.defineProperty;
-	var _getOwnPropertyDescriptor = Object[zoneSymbol('getOwnPropertyDescriptor')] = Object.getOwnPropertyDescriptor;
+	var _getOwnPropertyDescriptor = Object[zoneSymbol('getOwnPropertyDescriptor')] =
+	    Object.getOwnPropertyDescriptor;
 	var _create = Object.create;
 	var unconfigurablesKey = zoneSymbol('unconfigurables');
 	function propertyPatch() {
@@ -8613,7 +8719,8 @@
 	    }
 	    catch (e) {
 	        if (desc.configurable) {
-	            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let's retry with the original flag value
+	            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let's
+	            // retry with the original flag value
 	            if (typeof originalConfigurableFlag == 'undefined') {
 	                delete desc.configurable;
 	            }
@@ -8640,40 +8747,45 @@
 	    }
 	}
 	
-	function registerElementPatch(_global) {
-	    if (!isBrowser || !('registerElement' in _global.document)) {
-	        return;
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
+	var WTF_ISSUE_555 = 'Anchor,Area,Audio,BR,Base,BaseFont,Body,Button,Canvas,Content,DList,Directory,Div,Embed,FieldSet,Font,Form,Frame,FrameSet,HR,Head,Heading,Html,IFrame,Image,Input,Keygen,LI,Label,Legend,Link,Map,Marquee,Media,Menu,Meta,Meter,Mod,OList,Object,OptGroup,Option,Output,Paragraph,Pre,Progress,Quote,Script,Select,Source,Span,Style,TableCaption,TableCell,TableCol,Table,TableRow,TableSection,TextArea,Title,Track,UList,Unknown,Video';
+	var NO_EVENT_TARGET = 'ApplicationCache,EventSource,FileReader,InputMethodContext,MediaController,MessagePort,Node,Performance,SVGElementInstance,SharedWorker,TextTrack,TextTrackCue,TextTrackList,WebKitNamedFlow,Window,Worker,WorkerGlobalScope,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload,IDBRequest,IDBOpenDBRequest,IDBDatabase,IDBTransaction,IDBCursor,DBIndex'
+	    .split(',');
+	var EVENT_TARGET = 'EventTarget';
+	function eventTargetPatch(_global) {
+	    var apis = [];
+	    var isWtf = _global['wtf'];
+	    if (isWtf) {
+	        // Workaround for: https://github.com/google/tracing-framework/issues/555
+	        apis = WTF_ISSUE_555.split(',').map(function (v) { return 'HTML' + v + 'Element'; }).concat(NO_EVENT_TARGET);
 	    }
-	    var _registerElement = document.registerElement;
-	    var callbacks = [
-	        'createdCallback',
-	        'attachedCallback',
-	        'detachedCallback',
-	        'attributeChangedCallback'
-	    ];
-	    document.registerElement = function (name, opts) {
-	        if (opts && opts.prototype) {
-	            callbacks.forEach(function (callback) {
-	                var source = 'Document.registerElement::' + callback;
-	                if (opts.prototype.hasOwnProperty(callback)) {
-	                    var descriptor = Object.getOwnPropertyDescriptor(opts.prototype, callback);
-	                    if (descriptor && descriptor.value) {
-	                        descriptor.value = Zone.current.wrap(descriptor.value, source);
-	                        _redefineProperty(opts.prototype, callback, descriptor);
-	                    }
-	                    else {
-	                        opts.prototype[callback] = Zone.current.wrap(opts.prototype[callback], source);
-	                    }
-	                }
-	                else if (opts.prototype[callback]) {
-	                    opts.prototype[callback] = Zone.current.wrap(opts.prototype[callback], source);
-	                }
-	            });
-	        }
-	        return _registerElement.apply(document, [name, opts]);
-	    };
+	    else if (_global[EVENT_TARGET]) {
+	        apis.push(EVENT_TARGET);
+	    }
+	    else {
+	        // Note: EventTarget is not available in all browsers,
+	        // if it's not available, we instead patch the APIs in the IDL that inherit from EventTarget
+	        apis = NO_EVENT_TARGET;
+	    }
+	    for (var i = 0; i < apis.length; i++) {
+	        var type = _global[apis[i]];
+	        patchEventTargetMethods(type && type.prototype);
+	    }
 	}
 	
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
 	// we have to patch the instance since the proto is non-configurable
 	function apply(_global) {
 	    var WS = _global.WebSocket;
@@ -8707,7 +8819,15 @@
 	    }
 	}
 	
-	var eventNames = 'copy cut paste abort blur focus canplay canplaythrough change click contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop durationchange emptied ended input invalid keydown keypress keyup load loadeddata loadedmetadata loadstart message mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup pause play playing progress ratechange reset scroll seeked seeking select show stalled submit suspend timeupdate volumechange waiting mozfullscreenchange mozfullscreenerror mozpointerlockchange mozpointerlockerror error webglcontextrestored webglcontextlost webglcontextcreationerror'.split(' ');
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
+	var eventNames = 'copy cut paste abort blur focus canplay canplaythrough change click contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop durationchange emptied ended input invalid keydown keypress keyup load loadeddata loadedmetadata loadstart message mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup pause play playing progress ratechange reset scroll seeked seeking select show stalled submit suspend timeupdate volumechange waiting mozfullscreenchange mozfullscreenerror mozpointerlockchange mozpointerlockerror error webglcontextrestored webglcontextlost webglcontextcreationerror'
+	    .split(' ');
 	function propertyDescriptorPatch(_global) {
 	    if (isNode) {
 	        return;
@@ -8741,8 +8861,8 @@
 	    }
 	}
 	function canPatchViaPropertyDescriptor() {
-	    if (isBrowser && !Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'onclick')
-	        && typeof Element !== 'undefined') {
+	    if (isBrowser && !Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'onclick') &&
+	        typeof Element !== 'undefined') {
 	        // WebKit https://bugs.webkit.org/show_bug.cgi?id=134364
 	        // IDL interface attributes are not configurable
 	        var desc = Object.getOwnPropertyDescriptor(Element.prototype, 'onclick');
@@ -8768,7 +8888,7 @@
 	    var _loop_1 = function(i) {
 	        var property = eventNames[i];
 	        var onproperty = 'on' + property;
-	        document.addEventListener(property, function (event) {
+	        self.addEventListener(property, function (event) {
 	            var elt = event.target, bound, source;
 	            if (elt) {
 	                source = elt.constructor['name'] + '.' + onproperty;
@@ -8792,61 +8912,49 @@
 	    
 	}
 	
-	function patchTimer(window, setName, cancelName, nameSuffix) {
-	    var setNative = null;
-	    var clearNative = null;
-	    setName += nameSuffix;
-	    cancelName += nameSuffix;
-	    function scheduleTask(task) {
-	        var data = task.data;
-	        data.args[0] = task.invoke;
-	        data.handleId = setNative.apply(window, data.args);
-	        return task;
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
+	function registerElementPatch(_global) {
+	    if (!isBrowser || !('registerElement' in _global.document)) {
+	        return;
 	    }
-	    function clearTask(task) {
-	        return clearNative(task.data.handleId);
-	    }
-	    setNative = patchMethod(window, setName, function (delegate) { return function (self, args) {
-	        if (typeof args[0] === 'function') {
-	            var zone = Zone.current;
-	            var options = {
-	                handleId: null,
-	                isPeriodic: nameSuffix === 'Interval',
-	                delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 : null,
-	                args: args
-	            };
-	            var task = zone.scheduleMacroTask(setName, args[0], options, scheduleTask, clearTask);
-	            if (!task) {
-	                return task;
-	            }
-	            // Node.js must additionally support the ref and unref functions.
-	            var handle = task.data.handleId;
-	            if (handle.ref && handle.unref) {
-	                task.ref = handle.ref.bind(handle);
-	                task.unref = handle.unref.bind(handle);
-	            }
-	            return task;
+	    var _registerElement = document.registerElement;
+	    var callbacks = ['createdCallback', 'attachedCallback', 'detachedCallback', 'attributeChangedCallback'];
+	    document.registerElement = function (name, opts) {
+	        if (opts && opts.prototype) {
+	            callbacks.forEach(function (callback) {
+	                var source = 'Document.registerElement::' + callback;
+	                if (opts.prototype.hasOwnProperty(callback)) {
+	                    var descriptor = Object.getOwnPropertyDescriptor(opts.prototype, callback);
+	                    if (descriptor && descriptor.value) {
+	                        descriptor.value = Zone.current.wrap(descriptor.value, source);
+	                        _redefineProperty(opts.prototype, callback, descriptor);
+	                    }
+	                    else {
+	                        opts.prototype[callback] = Zone.current.wrap(opts.prototype[callback], source);
+	                    }
+	                }
+	                else if (opts.prototype[callback]) {
+	                    opts.prototype[callback] = Zone.current.wrap(opts.prototype[callback], source);
+	                }
+	            });
 	        }
-	        else {
-	            // cause an error by calling it directly.
-	            return delegate.apply(window, args);
-	        }
-	    }; });
-	    clearNative = patchMethod(window, cancelName, function (delegate) { return function (self, args) {
-	        var task = args[0];
-	        if (task && typeof task.type === 'string') {
-	            if (task.cancelFn && task.data.isPeriodic || task.runCount === 0) {
-	                // Do not cancel already canceled functions
-	                task.zone.cancelTask(task);
-	            }
-	        }
-	        else {
-	            // cause an error by calling it directly.
-	            delegate.apply(window, args);
-	        }
-	    }; });
+	        return _registerElement.apply(document, [name, opts]);
+	    };
 	}
 	
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
 	var set = 'set';
 	var clear = 'clear';
 	var blockingMethods = ['alert', 'prompt', 'confirm'];
@@ -8897,8 +9005,7 @@
 	        sendNative.apply(data.target, data.args);
 	        return task;
 	    }
-	    function placeholderCallback() {
-	    }
+	    function placeholderCallback() { }
 	    function clearTask(task) {
 	        var data = task.data;
 	        // Note - ideally, we would call data.target.removeEventListener here, but it's too late
@@ -8917,13 +9024,7 @@
 	            return sendNative.apply(self, args);
 	        }
 	        else {
-	            var options = {
-	                target: self,
-	                isPeriodic: false,
-	                delay: null,
-	                args: args,
-	                aborted: false
-	            };
+	            var options = { target: self, isPeriodic: false, delay: null, args: args, aborted: false };
 	            return zone.scheduleMacroTask('XMLHttpRequest.send', placeholderCallback, options, scheduleTask, clearTask);
 	        }
 	    }; });
@@ -8936,15 +9037,13 @@
 	            }
 	            task.zone.cancelTask(task);
 	        }
-	        // Otherwise, we are trying to abort an XHR which has not yet been sent, so there is no task to cancel. Do nothing.
+	        // Otherwise, we are trying to abort an XHR which has not yet been sent, so there is no task
+	        // to cancel. Do nothing.
 	    }; });
 	}
 	/// GEO_LOCATION
 	if (_global['navigator'] && _global['navigator'].geolocation) {
-	    patchPrototype(_global['navigator'].geolocation, [
-	        'getCurrentPosition',
-	        'watchPosition'
-	    ]);
+	    patchPrototype(_global['navigator'].geolocation, ['getCurrentPosition', 'watchPosition']);
 	}
 	
 	})));
@@ -9154,6 +9253,13 @@
 	    (factory());
 	}(this, (function () { 'use strict';
 	
+	/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
 	var NEWLINE = '\n';
 	var SEP = '  -------------  ';
 	var IGNORE_FRAMES = [];
@@ -9180,9 +9286,9 @@
 	// isn't thrown, however it's faster not to actually throw the exception.
 	var error = getStacktraceWithUncaughtError();
 	var coughtError = getStacktraceWithCaughtError();
-	var getStacktrace = error.stack
-	    ? getStacktraceWithUncaughtError
-	    : (coughtError.stack ? getStacktraceWithCaughtError : getStacktraceWithUncaughtError);
+	var getStacktrace = error.stack ?
+	    getStacktraceWithUncaughtError :
+	    (coughtError.stack ? getStacktraceWithCaughtError : getStacktraceWithUncaughtError);
 	function getFrames(error) {
 	    return error.stack ? error.stack.split(NEWLINE) : [];
 	}
@@ -9243,19 +9349,24 @@
 	                    stackSetSucceded = true;
 	                }
 	            }
-	            catch (e) { }
-	            var longStack = stackSetSucceded ? null : renderLongStackTrace(parentTask.data && parentTask.data[creationTrace], error.stack);
+	            catch (e) {
+	            }
+	            var longStack = stackSetSucceded ?
+	                null :
+	                renderLongStackTrace(parentTask.data && parentTask.data[creationTrace], error.stack);
 	            if (!stackSetSucceded) {
 	                try {
 	                    stackSetSucceded = error.stack = longStack;
 	                }
-	                catch (e) { }
+	                catch (e) {
+	                }
 	            }
 	            if (!stackSetSucceded) {
 	                try {
 	                    stackSetSucceded = error.longStack = longStack;
 	                }
-	                catch (e) { }
+	                catch (e) {
+	                }
 	            }
 	        }
 	        return parentZoneDelegate.handleError(targetZone, error);
@@ -44586,18 +44697,14 @@
 	var core_1 = __webpack_require__(313);
 	var platform_browser_1 = __webpack_require__(331);
 	var app_component_1 = __webpack_require__(334);
-	var footer_component_1 = __webpack_require__(335);
-	var header_component_1 = __webpack_require__(336);
-	var blogPosts_module_1 = __webpack_require__(337);
-	var router_1 = __webpack_require__(339);
-	var app_routers_1 = __webpack_require__(369);
+	var _layout_module_1 = __webpack_require__(339);
 	var AppModule = (function () {
 	    function AppModule() {
 	    }
 	    AppModule = __decorate([
 	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule, blogPosts_module_1.BlogPostsModule, router_1.RouterModule.forRoot(app_routers_1.ROUTES, { useHash: false })],
-	            declarations: [app_component_1.AppComponent, footer_component_1.FooterComponent, header_component_1.HeaderComponent],
+	            imports: [platform_browser_1.BrowserModule, _layout_module_1.LayoutModule],
+	            declarations: [app_component_1.AppComponent],
 	            bootstrap: [app_component_1.AppComponent],
 	        }), 
 	        __metadata('design:paramtypes', [])
@@ -44630,8 +44737,10 @@
 	    }
 	    AppComponent = __decorate([
 	        core_1.Component({
-	            selector: 'my-app',
-	            template: "\n\t<custom-header></custom-header>\n\t<router-outlet></router-outlet>\n\t<custom-footer></custom-footer>\n",
+	            selector: 'body',
+	            template: '<app></app>',
+	            styles: [String(__webpack_require__(335))],
+	            encapsulation: core_1.ViewEncapsulation.None
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], AppComponent);
@@ -44642,6 +44751,467 @@
 
 /***/ },
 /* 335 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(336);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(338)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./app.style.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./app.style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(337)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html, body {\n  margin: 0; }\n\nhtml {\n  position: relative;\n  min-height: 100%; }\n\nbody {\n  margin: 0 0 60px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 337 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 339 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by boiko on 10/30/2016.
+	 */
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(313);
+	var platform_browser_1 = __webpack_require__(331);
+	var _layout_component_1 = __webpack_require__(340);
+	var footer_module_1 = __webpack_require__(341);
+	var header_module_1 = __webpack_require__(346);
+	var router_1 = __webpack_require__(351);
+	var app_routers_1 = __webpack_require__(381);
+	var postsPage_module_1 = __webpack_require__(383);
+	var LayoutModule = (function () {
+	    function LayoutModule() {
+	    }
+	    LayoutModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule, postsPage_module_1.PostsPageModule, footer_module_1.FooterModule,
+	                header_module_1.HeaderModule, router_1.RouterModule.forRoot(app_routers_1.ROUTES, { useHash: false })],
+	            declarations: [_layout_component_1.LayoutComponent],
+	            bootstrap: [_layout_component_1.LayoutComponent],
+	            exports: [_layout_component_1.LayoutComponent],
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], LayoutModule);
+	    return LayoutModule;
+	}());
+	exports.LayoutModule = LayoutModule;
+
+
+/***/ },
+/* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by boiko on 10/30/2016.
+	 */
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(313);
+	var LayoutComponent = (function () {
+	    function LayoutComponent() {
+	    }
+	    LayoutComponent = __decorate([
+	        core_1.Component({
+	            selector: 'app',
+	            template: "\n\t<custom-header></custom-header>\n\t<router-outlet></router-outlet>\n\t<custom-footer></custom-footer>\n",
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], LayoutComponent);
+	    return LayoutComponent;
+	}());
+	exports.LayoutComponent = LayoutComponent;
+
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by boiko on 10/30/2016.
+	 */
+	var platform_browser_1 = __webpack_require__(331);
+	var core_1 = __webpack_require__(313);
+	var footer_component_1 = __webpack_require__(342);
+	var FooterModule = (function () {
+	    function FooterModule() {
+	    }
+	    FooterModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule],
+	            declarations: [footer_component_1.FooterComponent],
+	            bootstrap: [footer_component_1.FooterComponent],
+	            exports: [footer_component_1.FooterComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], FooterModule);
+	    return FooterModule;
+	}());
+	exports.FooterModule = FooterModule;
+
+
+/***/ },
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44664,7 +45234,9 @@
 	    FooterComponent = __decorate([
 	        core_1.Component({
 	            selector: "custom-footer",
-	            templateUrl: __webpack_require__(373)
+	            template: __webpack_require__(343),
+	            styles: [String(__webpack_require__(344))],
+	            encapsulation: core_1.ViewEncapsulation.Emulated
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], FooterComponent);
@@ -44674,7 +45246,87 @@
 
 
 /***/ },
-/* 336 */
+/* 343 */
+/***/ function(module, exports) {
+
+	module.exports = "<footer class=\"custom-footer\">\r\n\t<div class=\"content-container\">\r\n\t\t<p>Created by Boykov D.A.</p>\r\n\t</div>\r\n</footer>"
+
+/***/ },
+/* 344 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(345);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(338)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./footer.style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./footer.style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 345 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(337)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".custom-footer {\n  background: crimson;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 60px;\n  width: 100%;\n  padding: 0; }\n  .custom-footer .content-container {\n    float: right; }\n    .custom-footer .content-container p {\n      color: chocolate; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 346 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var platform_browser_1 = __webpack_require__(331);
+	var core_1 = __webpack_require__(313);
+	var header_component_1 = __webpack_require__(347);
+	var HeaderModule = (function () {
+	    function HeaderModule() {
+	    }
+	    HeaderModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule],
+	            declarations: [header_component_1.HeaderComponent],
+	            bootstrap: [header_component_1.HeaderComponent],
+	            exports: [header_component_1.HeaderComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], HeaderModule);
+	    return HeaderModule;
+	}());
+	exports.HeaderModule = HeaderModule;
+
+
+/***/ },
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44697,7 +45349,9 @@
 	    HeaderComponent = __decorate([
 	        core_1.Component({
 	            selector: "custom-header",
-	            templateUrl: __webpack_require__(374)
+	            template: __webpack_require__(348),
+	            styles: [String(__webpack_require__(349))],
+	            encapsulation: core_1.ViewEncapsulation.Emulated
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], HeaderComponent);
@@ -44707,77 +45361,53 @@
 
 
 /***/ },
-/* 337 */
+/* 348 */
+/***/ function(module, exports) {
+
+	module.exports = "<header class=\"custom-header\">\r\n\t<div class=\"content-container\">\r\n\t\t<h1>First header</h1>\r\n\t</div>\r\n</header>"
+
+/***/ },
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by boiko on 9/22/2016.
-	 */
-	var core_1 = __webpack_require__(313);
-	var platform_browser_1 = __webpack_require__(331);
-	var blogPosts_component_1 = __webpack_require__(338);
-	var BlogPostsModule = (function () {
-	    function BlogPostsModule() {
-	    }
-	    BlogPostsModule = __decorate([
-	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule],
-	            declarations: [blogPosts_component_1.BlogPostsComponent],
-	            bootstrap: [blogPosts_component_1.BlogPostsComponent],
-	            exports: [blogPosts_component_1.BlogPostsComponent]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], BlogPostsModule);
-	    return BlogPostsModule;
-	}());
-	exports.BlogPostsModule = BlogPostsModule;
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(350);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(338)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./header.style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./header.style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 350 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(337)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".custom-header {\n  display: flex;\n  justify-content: center;\n  overflow: auto;\n  height: 40px;\n  background: crimson;\n  padding: 0;\n  width: 100%; }\n  .custom-header .content-container {\n    align-items: center; }\n    .custom-header .content-container h1 {\n      margin: 0;\n      color: chocolate; }\n", ""]);
+	
+	// exports
 
 
 /***/ },
-/* 338 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by boiko on 9/22/2016.
-	 */
-	var core_1 = __webpack_require__(313);
-	var BlogPostsComponent = (function () {
-	    function BlogPostsComponent() {
-	    }
-	    BlogPostsComponent = __decorate([
-	        core_1.Component({
-	            selector: 'blog-posts',
-	            template: "\n\t<div>blog postz</div>\n",
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], BlogPostsComponent);
-	    return BlogPostsComponent;
-	}());
-	exports.BlogPostsComponent = BlogPostsComponent;
-
-
-/***/ },
-/* 339 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44786,7 +45416,7 @@
 	 * License: MIT
 	 */
 	(function (global, factory) {
-	     true ? factory(exports, __webpack_require__(332), __webpack_require__(313), __webpack_require__(314), __webpack_require__(340), __webpack_require__(353), __webpack_require__(354), __webpack_require__(355), __webpack_require__(356), __webpack_require__(360), __webpack_require__(361), __webpack_require__(315), __webpack_require__(362), __webpack_require__(363), __webpack_require__(364), __webpack_require__(365), __webpack_require__(366), __webpack_require__(367), __webpack_require__(368)) :
+	     true ? factory(exports, __webpack_require__(332), __webpack_require__(313), __webpack_require__(314), __webpack_require__(352), __webpack_require__(365), __webpack_require__(366), __webpack_require__(367), __webpack_require__(368), __webpack_require__(372), __webpack_require__(373), __webpack_require__(315), __webpack_require__(374), __webpack_require__(375), __webpack_require__(376), __webpack_require__(377), __webpack_require__(378), __webpack_require__(379), __webpack_require__(380)) :
 	    typeof define === 'function' && define.amd ? define(['exports', '@angular/common', '@angular/core', 'rxjs/Subject', 'rxjs/observable/from', 'rxjs/observable/of', 'rxjs/operator/every', 'rxjs/operator/map', 'rxjs/operator/mergeAll', 'rxjs/operator/mergeMap', 'rxjs/operator/reduce', 'rxjs/Observable', 'rxjs/operator/catch', 'rxjs/operator/concatAll', 'rxjs/operator/first', 'rxjs/util/EmptyError', 'rxjs/observable/fromPromise', 'rxjs/operator/last', 'rxjs/BehaviorSubject'], factory) :
 	    (factory((global.ng = global.ng || {}, global.ng.router = global.ng.router || {}),global.ng.common,global.ng.core,global.Rx,global.Rx.Observable,global.Rx.Observable,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable,global.Rx.Observable.prototype,global.Rx));
 	}(this, function (exports,_angular_common,_angular_core,rxjs_Subject,rxjs_observable_from,rxjs_observable_of,rxjs_operator_every,rxjs_operator_map,rxjs_operator_mergeAll,rxjs_operator_mergeMap,rxjs_operator_reduce,rxjs_Observable,rxjs_operator_catch,rxjs_operator_concatAll,rxjs_operator_first,rxjs_util_EmptyError,rxjs_observable_fromPromise,l,rxjs_BehaviorSubject) { 'use strict';
@@ -48486,16 +49116,16 @@
 
 
 /***/ },
-/* 340 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var FromObservable_1 = __webpack_require__(341);
+	var FromObservable_1 = __webpack_require__(353);
 	exports.from = FromObservable_1.FromObservable.create;
 	//# sourceMappingURL=from.js.map
 
 /***/ },
-/* 341 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48505,14 +49135,14 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var isArray_1 = __webpack_require__(321);
-	var isPromise_1 = __webpack_require__(342);
-	var PromiseObservable_1 = __webpack_require__(343);
-	var IteratorObservable_1 = __webpack_require__(344);
-	var ArrayObservable_1 = __webpack_require__(346);
-	var ArrayLikeObservable_1 = __webpack_require__(350);
-	var iterator_1 = __webpack_require__(345);
+	var isPromise_1 = __webpack_require__(354);
+	var PromiseObservable_1 = __webpack_require__(355);
+	var IteratorObservable_1 = __webpack_require__(356);
+	var ArrayObservable_1 = __webpack_require__(358);
+	var ArrayLikeObservable_1 = __webpack_require__(362);
+	var iterator_1 = __webpack_require__(357);
 	var Observable_1 = __webpack_require__(315);
-	var observeOn_1 = __webpack_require__(351);
+	var observeOn_1 = __webpack_require__(363);
 	var observable_1 = __webpack_require__(328);
 	var isArrayLike = (function (x) { return x && typeof x.length === 'number'; });
 	/**
@@ -48616,7 +49246,7 @@
 	//# sourceMappingURL=FromObservable.js.map
 
 /***/ },
-/* 342 */
+/* 354 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48627,7 +49257,7 @@
 	//# sourceMappingURL=isPromise.js.map
 
 /***/ },
-/* 343 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48753,7 +49383,7 @@
 	//# sourceMappingURL=PromiseObservable.js.map
 
 /***/ },
-/* 344 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48764,7 +49394,7 @@
 	};
 	var root_1 = __webpack_require__(316);
 	var Observable_1 = __webpack_require__(315);
-	var iterator_1 = __webpack_require__(345);
+	var iterator_1 = __webpack_require__(357);
 	/**
 	 * We need this JSDoc comment for affecting ESDoc.
 	 * @extends {Ignored}
@@ -48915,7 +49545,7 @@
 	//# sourceMappingURL=IteratorObservable.js.map
 
 /***/ },
-/* 345 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48952,7 +49582,7 @@
 	//# sourceMappingURL=iterator.js.map
 
 /***/ },
-/* 346 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48962,9 +49592,9 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Observable_1 = __webpack_require__(315);
-	var ScalarObservable_1 = __webpack_require__(347);
-	var EmptyObservable_1 = __webpack_require__(348);
-	var isScheduler_1 = __webpack_require__(349);
+	var ScalarObservable_1 = __webpack_require__(359);
+	var EmptyObservable_1 = __webpack_require__(360);
+	var isScheduler_1 = __webpack_require__(361);
 	/**
 	 * We need this JSDoc comment for affecting ESDoc.
 	 * @extends {Ignored}
@@ -49079,7 +49709,7 @@
 	//# sourceMappingURL=ArrayObservable.js.map
 
 /***/ },
-/* 347 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49142,7 +49772,7 @@
 	//# sourceMappingURL=ScalarObservable.js.map
 
 /***/ },
-/* 348 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49222,7 +49852,7 @@
 	//# sourceMappingURL=EmptyObservable.js.map
 
 /***/ },
-/* 349 */
+/* 361 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49233,7 +49863,7 @@
 	//# sourceMappingURL=isScheduler.js.map
 
 /***/ },
-/* 350 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49243,8 +49873,8 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Observable_1 = __webpack_require__(315);
-	var ScalarObservable_1 = __webpack_require__(347);
-	var EmptyObservable_1 = __webpack_require__(348);
+	var ScalarObservable_1 = __webpack_require__(359);
+	var EmptyObservable_1 = __webpack_require__(360);
 	/**
 	 * We need this JSDoc comment for affecting ESDoc.
 	 * @extends {Ignored}
@@ -49308,7 +49938,7 @@
 	//# sourceMappingURL=ArrayLikeObservable.js.map
 
 /***/ },
-/* 351 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49318,7 +49948,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Subscriber_1 = __webpack_require__(318);
-	var Notification_1 = __webpack_require__(352);
+	var Notification_1 = __webpack_require__(364);
 	/**
 	 * @see {@link Notification}
 	 *
@@ -49388,7 +50018,7 @@
 	//# sourceMappingURL=observeOn.js.map
 
 /***/ },
-/* 352 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49520,16 +50150,16 @@
 	//# sourceMappingURL=Notification.js.map
 
 /***/ },
-/* 353 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var ArrayObservable_1 = __webpack_require__(346);
+	var ArrayObservable_1 = __webpack_require__(358);
 	exports.of = ArrayObservable_1.ArrayObservable.of;
 	//# sourceMappingURL=of.js.map
 
 /***/ },
-/* 354 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49602,7 +50232,7 @@
 	//# sourceMappingURL=every.js.map
 
 /***/ },
-/* 355 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49694,7 +50324,7 @@
 	//# sourceMappingURL=map.js.map
 
 /***/ },
-/* 356 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49703,8 +50333,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var OuterSubscriber_1 = __webpack_require__(357);
-	var subscribeToResult_1 = __webpack_require__(358);
+	var OuterSubscriber_1 = __webpack_require__(369);
+	var subscribeToResult_1 = __webpack_require__(370);
 	/**
 	 * Converts a higher-order Observable into a first-order Observable which
 	 * concurrently delivers all values that are emitted on the inner Observables.
@@ -49810,7 +50440,7 @@
 	//# sourceMappingURL=mergeAll.js.map
 
 /***/ },
-/* 357 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49845,16 +50475,16 @@
 	//# sourceMappingURL=OuterSubscriber.js.map
 
 /***/ },
-/* 358 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var root_1 = __webpack_require__(316);
 	var isArray_1 = __webpack_require__(321);
-	var isPromise_1 = __webpack_require__(342);
+	var isPromise_1 = __webpack_require__(354);
 	var Observable_1 = __webpack_require__(315);
-	var iterator_1 = __webpack_require__(345);
-	var InnerSubscriber_1 = __webpack_require__(359);
+	var iterator_1 = __webpack_require__(357);
+	var InnerSubscriber_1 = __webpack_require__(371);
 	var observable_1 = __webpack_require__(328);
 	function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
 	    var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
@@ -49924,7 +50554,7 @@
 	//# sourceMappingURL=subscribeToResult.js.map
 
 /***/ },
-/* 359 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49965,7 +50595,7 @@
 	//# sourceMappingURL=InnerSubscriber.js.map
 
 /***/ },
-/* 360 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49974,8 +50604,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var subscribeToResult_1 = __webpack_require__(358);
-	var OuterSubscriber_1 = __webpack_require__(357);
+	var subscribeToResult_1 = __webpack_require__(370);
+	var OuterSubscriber_1 = __webpack_require__(369);
 	/**
 	 * Projects each source value to an Observable which is merged in the output
 	 * Observable.
@@ -50131,7 +50761,7 @@
 	//# sourceMappingURL=mergeMap.js.map
 
 /***/ },
-/* 361 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50248,7 +50878,7 @@
 	//# sourceMappingURL=reduce.js.map
 
 /***/ },
-/* 362 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50257,8 +50887,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var OuterSubscriber_1 = __webpack_require__(357);
-	var subscribeToResult_1 = __webpack_require__(358);
+	var OuterSubscriber_1 = __webpack_require__(369);
+	var subscribeToResult_1 = __webpack_require__(370);
 	/**
 	 * Catches errors on the observable to be handled by returning a new observable or throwing an error.
 	 * @param {function} selector a function that takes as arguments `err`, which is the error, and `caught`, which
@@ -50318,11 +50948,11 @@
 	//# sourceMappingURL=catch.js.map
 
 /***/ },
-/* 363 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var mergeAll_1 = __webpack_require__(356);
+	var mergeAll_1 = __webpack_require__(368);
 	/**
 	 * Converts a higher-order Observable into a first-order Observable by
 	 * concatenating the inner Observables in order.
@@ -50372,7 +51002,7 @@
 	//# sourceMappingURL=concatAll.js.map
 
 /***/ },
-/* 364 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50382,7 +51012,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Subscriber_1 = __webpack_require__(318);
-	var EmptyError_1 = __webpack_require__(365);
+	var EmptyError_1 = __webpack_require__(377);
 	/**
 	 * Emits only the first value (or the first value that meets some condition)
 	 * emitted by the source Observable.
@@ -50525,7 +51155,7 @@
 	//# sourceMappingURL=first.js.map
 
 /***/ },
-/* 365 */
+/* 377 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -50558,16 +51188,16 @@
 	//# sourceMappingURL=EmptyError.js.map
 
 /***/ },
-/* 366 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var PromiseObservable_1 = __webpack_require__(343);
+	var PromiseObservable_1 = __webpack_require__(355);
 	exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
 	//# sourceMappingURL=fromPromise.js.map
 
 /***/ },
-/* 367 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50577,7 +51207,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Subscriber_1 = __webpack_require__(318);
-	var EmptyError_1 = __webpack_require__(365);
+	var EmptyError_1 = __webpack_require__(377);
 	/**
 	 * Returns an Observable that emits only the last item emitted by the source Observable.
 	 * It optionally takes a predicate function as a parameter, in which case, rather than emitting
@@ -50690,7 +51320,7 @@
 	//# sourceMappingURL=last.js.map
 
 /***/ },
-/* 368 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50744,30 +51374,85 @@
 	//# sourceMappingURL=BehaviorSubject.js.map
 
 /***/ },
-/* 369 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var blogPosts_component_1 = __webpack_require__(338);
+	var postsPage_component_1 = __webpack_require__(382);
 	exports.ROUTES = [
-	    { path: '', component: blogPosts_component_1.BlogPostsComponent }
+	    { path: '', component: postsPage_component_1.PostsPageComponent }
 	];
 
 
 /***/ },
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "e7354a3ff526bfb77393d2440af65d3b.html";
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by boiko on 10/30/2016.
+	 */
+	var core_1 = __webpack_require__(313);
+	var PostsPageComponent = (function () {
+	    function PostsPageComponent() {
+	    }
+	    PostsPageComponent = __decorate([
+	        core_1.Component({
+	            selector: 'blog-posts',
+	            template: "\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n<div>blog postz</div>\n"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PostsPageComponent);
+	    return PostsPageComponent;
+	}());
+	exports.PostsPageComponent = PostsPageComponent;
+
 
 /***/ },
-/* 374 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "39920382c36ee2f575a4220bdc050ced.html";
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by boiko on 10/30/2016.
+	 */
+	var core_1 = __webpack_require__(313);
+	var platform_browser_1 = __webpack_require__(331);
+	var postsPage_component_1 = __webpack_require__(382);
+	var PostsPageModule = (function () {
+	    function PostsPageModule() {
+	    }
+	    PostsPageModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule],
+	            declarations: [postsPage_component_1.PostsPageComponent],
+	            bootstrap: [postsPage_component_1.PostsPageComponent],
+	            exports: [postsPage_component_1.PostsPageComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PostsPageModule);
+	    return PostsPageModule;
+	}());
+	exports.PostsPageModule = PostsPageModule;
+
 
 /***/ }
 /******/ ]);

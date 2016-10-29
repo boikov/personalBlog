@@ -8,7 +8,7 @@ import { IUserModel } from "../../model/user.model";
 
 @Component({
 	           selector   : 'auth-form',
-	           templateUrl: require('file!./auth.template.html')
+	           templateUrl: require('raw!./auth.template.html')
            })
 export class AuthComponent {
 	public result: String = "";

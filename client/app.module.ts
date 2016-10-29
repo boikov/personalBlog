@@ -5,15 +5,11 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
-import { FooterComponent } from "./components/footerComponent/footer.component";
-import { HeaderComponent } from "./components/headerComponent/header.component";
-import { BlogPostsModule } from "./components/blogPostsComponent/blogPosts.module";
-import { RouterModule } from "@angular/router";
-import { ROUTES } from "./app.routers";
+import { LayoutModule }  from './pages/_layout.module';
 
 @NgModule({
-	          imports     : [BrowserModule, BlogPostsModule,RouterModule.forRoot(ROUTES, { useHash: false })],
-	          declarations: [AppComponent, FooterComponent, HeaderComponent],
+	          imports     : [BrowserModule, LayoutModule],
+	          declarations: [AppComponent],
 	          bootstrap   : [AppComponent],
           })
 export class AppModule {

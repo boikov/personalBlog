@@ -14,20 +14,15 @@ function dirPath(concatPath) {
 module.exports = {
     devtool: "source-map",
     entry: {
-        "app": "./client/boot.ts",
-        "styles": "./client/sass/application.scss"
+        "app": "./client/boot.ts"
     },
     output: {
         "filename": "[name].js",
-        "publicPath": "./",
+        "publicPath": "./public",
         "path": dirPath("./public/")
     },
     resolve: {
-        extensions: ["", ".js", ".ts", ".html", ".sass", ".css"],
-        root: [
-            dirPath(""),
-            dirPath("/sass")
-        ]
+        extensions: ["", ".js", ".ts", ".html", ".sass", ".css"]
     },
     module: {
         loaders: [
@@ -37,11 +32,8 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
-            {
-                test: /\.css$/,
-                loaders: ["style", "css"]
+                exclude: /node_modules/,
+                loader: "style!css!sass"
             }
         ]
     },
