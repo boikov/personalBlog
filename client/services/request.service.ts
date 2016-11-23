@@ -2,30 +2,27 @@
  * Created by boiko on 9/22/2016.
  */
 
-import { Injectable } from "@angular/core";
 import {
 	Http,
 	Response,
 	Headers,
 	RequestOptions
 } from '@angular/http';
-import { Observable } from "rxjs";
 import 'rxjs/Rx';
 
-@Injectable()
 export class RequestService {
 
 	constructor(private http: Http) {
 	}
 
-	get<T>(url: string): Observable<T> {
+	get<T>(url: string): Promise<T> {
 		return this.http.get(url)
-		           .map((res: Response)=>{ return this.extractData(res) as T;});
+		           .map((res: Response)=>{ return this.extractData(res) as T;}).toPromise();
 	}
 
-	post<T>(url: string, data: T): Observable<T> {
+	post<T>(url: string, data: T): Promise<T> {
 		return this.http.post(url, JSON.stringify(data), this.getJsonHeader())
-		           .map((res: Response)=>{ return this.extractData(res) as T;});
+		           .map((res: Response)=>{ return this.extractData(res) as T;}).toPromise();
 	}
 
 	private getJsonHeader():RequestOptions{

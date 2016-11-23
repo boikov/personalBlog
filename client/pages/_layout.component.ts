@@ -1,5 +1,5 @@
 /**
- * Created by boiko on 10/30/2016.
+ * Created by Boykov D. on 10/30/2016.
  */
 
 import { Component } from '@angular/core';

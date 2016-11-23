@@ -1,5 +1,5 @@
 /**
- * Created by boiko on 9/22/2016.
+ * Created by Boykov D. on 9/22/2016.
  */
 import {Injectable} from "@angular/core";
 import { RequestService } from "./request.service";
@@ -8,13 +8,16 @@ import { IUserModel } from "../model/user.model";
 
 @Injectable()
 export class AuthService{
-	constructor(private requestService:RequestService){}
+	private requestService:RequestService;
+	constructor(){
+		this.requestService=new RequestService();
+	}
 
-	singIn(user:IUserModel):Observable<any>{
+	singIn(user:IUserModel):Promise<IUserModel>{
 		return this.requestService.post<IUserModel>('/signin',user);
 	}
 
-	authentification(user:IUserModel):Observable<any>{
+	authentification(user:IUserModel):Promise<IUserModel>{
 		return this.requestService.post<IUserModel>('/authenticate',user);
 	}
 }
