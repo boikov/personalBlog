@@ -1,5 +1,5 @@
 /**
- * Created by boiko on 9/22/2016.
+ * Created by Boykov D. on 9/22/2016.
  */
 
 import { NgModule }      from '@angular/core';
@@ -14,7 +14,7 @@ import { HttpModule } from "@angular/http";
 	          imports     : [BrowserModule, FormsModule, HttpModule],
 	          declarations: [AuthComponent],
 	          bootstrap   : [AuthComponent],
-	          providers   : [RequestService, AuthService],
+	          providers   : [AuthService],
 	          exports     : [AuthComponent]
           })
 export class AuthModule {

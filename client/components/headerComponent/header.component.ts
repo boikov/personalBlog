@@ -1,5 +1,5 @@
 /**
- * Created by boiko on 9/22/2016.
+ * Created by Boykov D. on 9/22/2016.
  */
 import {
 	Component,
@@ -8,7 +8,7 @@ import {
 
 @Component({
 	           selector     : "custom-header",
-	           template     : require('raw!./header.template.html'),
+	           template     : require('./header.template.html'),
 	           styles       : [String(require("./header.style.scss"))],
 	           encapsulation: ViewEncapsulation.Emulated
            })
