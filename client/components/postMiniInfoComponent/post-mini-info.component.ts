@@ -3,8 +3,10 @@
  */
 import {
 	Component,
-	ViewEncapsulation
+	ViewEncapsulation,
+	Input
 } from "@angular/core";
+import { PostMiniInfo } from "../../model/post-mini-info.model";
 
 @Component({
 	           selector     : "post-mini-info",
@@ -13,4 +15,5 @@ import {
 	           encapsulation: ViewEncapsulation.Emulated
            })
 export class PostMiniInfoComponent {
+	@Input() postMiniInfo: PostMiniInfo;
 }

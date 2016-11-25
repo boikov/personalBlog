@@ -17,7 +17,8 @@ export class PostService{
 
 				posts.push(<PostMiniInfo>{
 					id   : 1,
-					title: '1'
+					title: '1',
+					description:'olololololosdfsdfsdfsdfsdfsdfsdfsdf'
 				});
 			}
 			resolve(posts)

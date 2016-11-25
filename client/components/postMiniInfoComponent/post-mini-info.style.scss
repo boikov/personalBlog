@@ -1,0 +1,20 @@
+.post-item {
+	margin     : 5px;
+	height     : 200px;
+	background : green;
+	@media(min-width : 400px) {
+		width : 300px;
+	}
+	@media(max-width : 400px) {
+		width : 200px;
+	}
+
+	.header{
+		background: bisque;
+		text-align: center;
+	}
+
+	.description{
+		margin-top: 8px;
+	}
+}

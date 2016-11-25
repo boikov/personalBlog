@@ -45868,7 +45868,7 @@
 	var header_module_1 = __webpack_require__(346);
 	var router_1 = __webpack_require__(351);
 	var app_routers_1 = __webpack_require__(383);
-	var postsPage_module_1 = __webpack_require__(681);
+	var postsPage_module_1 = __webpack_require__(389);
 	var LayoutModule = (function () {
 	    function LayoutModule() {
 	    }
@@ -52795,7 +52795,8 @@
 	    PostsPageComponent = __decorate([
 	        core_1.Component({
 	            selector: 'blog-posts',
-	            template: "\n<div *ngFor=\"let post of posts\">\n <post-mini-info></post-mini-info>\n</div>\n"
+	            template: __webpack_require__(386),
+	            styles: [String(__webpack_require__(387))]
 	        }), 
 	        __metadata('design:paramtypes', [post_service_1.PostService])
 	    ], PostsPageComponent);
@@ -52831,7 +52832,8 @@
 	            for (var i = 0; i < 10; i++) {
 	                posts.push({
 	                    id: 1,
-	                    title: '1'
+	                    title: '1',
+	                    description: 'olololololosdfsdfsdfsdfsdfsdfsdfsdf'
 	                });
 	            }
 	            resolve(posts);
@@ -52847,8 +52849,217 @@
 
 
 /***/ },
-/* 386 */,
+/* 386 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"page-container\">\r\n\t<div class=\"posts-container\">\r\n\t\t<div *ngFor=\"let post of posts\">\r\n\t\t\t<post-mini-info [postMiniInfo]=\"post\"></post-mini-info>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
+
+/***/ },
 /* 387 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(388);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(338)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./postsPage.style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./postsPage.style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 388 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(337)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".page-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.posts-container {\n  display: flex;\n  flex-direction: row;\n  flex-flow: wrap;\n  justify-content: center;\n  align-items: center;\n  background: red; }\n  @media (min-width: 1024px) {\n    .posts-container {\n      width: 70%; } }\n  @media (min-width: 700px) and (max-width: 1024px) {\n    .posts-container {\n      width: 90%; } }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 389 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by Boykov D. on 10/30/2016.
+	 */
+	var core_1 = __webpack_require__(313);
+	var platform_browser_1 = __webpack_require__(331);
+	var postsPage_component_1 = __webpack_require__(384);
+	var post_mini_info_module_1 = __webpack_require__(390);
+	var post_service_1 = __webpack_require__(385);
+	var http_1 = __webpack_require__(395);
+	var PostsPageModule = (function () {
+	    function PostsPageModule() {
+	    }
+	    PostsPageModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule, post_mini_info_module_1.PostMiniInfoModule, http_1.HttpModule],
+	            declarations: [postsPage_component_1.PostsPageComponent],
+	            bootstrap: [postsPage_component_1.PostsPageComponent],
+	            providers: [post_service_1.PostService],
+	            exports: [postsPage_component_1.PostsPageComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PostsPageModule);
+	    return PostsPageModule;
+	}());
+	exports.PostsPageModule = PostsPageModule;
+
+
+/***/ },
+/* 390 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by Boykov D. on 11/24/2016.
+	 */
+	var platform_browser_1 = __webpack_require__(331);
+	var core_1 = __webpack_require__(313);
+	var post_mini_info_component_1 = __webpack_require__(391);
+	var PostMiniInfoModule = (function () {
+	    function PostMiniInfoModule() {
+	    }
+	    PostMiniInfoModule = __decorate([
+	        core_1.NgModule({
+	            imports: [platform_browser_1.BrowserModule],
+	            declarations: [post_mini_info_component_1.PostMiniInfoComponent],
+	            bootstrap: [post_mini_info_component_1.PostMiniInfoComponent],
+	            exports: [post_mini_info_component_1.PostMiniInfoComponent]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PostMiniInfoModule);
+	    return PostMiniInfoModule;
+	}());
+	exports.PostMiniInfoModule = PostMiniInfoModule;
+
+
+/***/ },
+/* 391 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	/**
+	 * Created by Boykov D. on 11/24/2016.
+	 */
+	var core_1 = __webpack_require__(313);
+	var post_mini_info_model_1 = __webpack_require__(396);
+	var PostMiniInfoComponent = (function () {
+	    function PostMiniInfoComponent() {
+	    }
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', post_mini_info_model_1.PostMiniInfo)
+	    ], PostMiniInfoComponent.prototype, "postMiniInfo", void 0);
+	    PostMiniInfoComponent = __decorate([
+	        core_1.Component({
+	            selector: "post-mini-info",
+	            template: __webpack_require__(392),
+	            styles: [String(__webpack_require__(393))],
+	            encapsulation: core_1.ViewEncapsulation.Emulated
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PostMiniInfoComponent);
+	    return PostMiniInfoComponent;
+	}());
+	exports.PostMiniInfoComponent = PostMiniInfoComponent;
+
+
+/***/ },
+/* 392 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"post-item\">\r\n\t<div class=\"header\">\r\n\t\t<span>{{postMiniInfo.title}}</span>\r\n\t</div>\r\n\t<div class=\"description\">\r\n\t\t<span>{{postMiniInfo.description}}</span>\r\n\t</div>\r\n</div>"
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(394);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(338)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./post-mini-info.style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./post-mini-info.style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(337)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".post-item {\n  margin: 5px;\n  height: 200px;\n  background: green; }\n  @media (min-width: 400px) {\n    .post-item {\n      width: 300px; } }\n  @media (max-width: 400px) {\n    .post-item {\n      width: 200px; } }\n  .post-item .header {\n    background: bisque;\n    text-align: center; }\n  .post-item .description {\n    margin-top: 8px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -54638,455 +54849,19 @@
 	}));
 
 /***/ },
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */,
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */,
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */,
-/* 445 */,
-/* 446 */,
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */,
-/* 451 */,
-/* 452 */,
-/* 453 */,
-/* 454 */,
-/* 455 */,
-/* 456 */,
-/* 457 */,
-/* 458 */,
-/* 459 */,
-/* 460 */,
-/* 461 */,
-/* 462 */,
-/* 463 */,
-/* 464 */,
-/* 465 */,
-/* 466 */,
-/* 467 */,
-/* 468 */,
-/* 469 */,
-/* 470 */,
-/* 471 */,
-/* 472 */,
-/* 473 */,
-/* 474 */,
-/* 475 */,
-/* 476 */,
-/* 477 */,
-/* 478 */,
-/* 479 */,
-/* 480 */,
-/* 481 */,
-/* 482 */,
-/* 483 */,
-/* 484 */,
-/* 485 */,
-/* 486 */,
-/* 487 */,
-/* 488 */,
-/* 489 */,
-/* 490 */,
-/* 491 */,
-/* 492 */,
-/* 493 */,
-/* 494 */,
-/* 495 */,
-/* 496 */,
-/* 497 */,
-/* 498 */,
-/* 499 */,
-/* 500 */,
-/* 501 */,
-/* 502 */,
-/* 503 */,
-/* 504 */,
-/* 505 */,
-/* 506 */,
-/* 507 */,
-/* 508 */,
-/* 509 */,
-/* 510 */,
-/* 511 */,
-/* 512 */,
-/* 513 */,
-/* 514 */,
-/* 515 */,
-/* 516 */,
-/* 517 */,
-/* 518 */,
-/* 519 */,
-/* 520 */,
-/* 521 */,
-/* 522 */,
-/* 523 */,
-/* 524 */,
-/* 525 */,
-/* 526 */,
-/* 527 */,
-/* 528 */,
-/* 529 */,
-/* 530 */,
-/* 531 */,
-/* 532 */,
-/* 533 */,
-/* 534 */,
-/* 535 */,
-/* 536 */,
-/* 537 */,
-/* 538 */,
-/* 539 */,
-/* 540 */,
-/* 541 */,
-/* 542 */,
-/* 543 */,
-/* 544 */,
-/* 545 */,
-/* 546 */,
-/* 547 */,
-/* 548 */,
-/* 549 */,
-/* 550 */,
-/* 551 */,
-/* 552 */,
-/* 553 */,
-/* 554 */,
-/* 555 */,
-/* 556 */,
-/* 557 */,
-/* 558 */,
-/* 559 */,
-/* 560 */,
-/* 561 */,
-/* 562 */,
-/* 563 */,
-/* 564 */,
-/* 565 */,
-/* 566 */,
-/* 567 */,
-/* 568 */,
-/* 569 */,
-/* 570 */,
-/* 571 */,
-/* 572 */,
-/* 573 */,
-/* 574 */,
-/* 575 */,
-/* 576 */,
-/* 577 */,
-/* 578 */,
-/* 579 */,
-/* 580 */,
-/* 581 */,
-/* 582 */,
-/* 583 */,
-/* 584 */,
-/* 585 */,
-/* 586 */,
-/* 587 */,
-/* 588 */,
-/* 589 */,
-/* 590 */,
-/* 591 */,
-/* 592 */,
-/* 593 */,
-/* 594 */,
-/* 595 */,
-/* 596 */,
-/* 597 */,
-/* 598 */,
-/* 599 */,
-/* 600 */,
-/* 601 */,
-/* 602 */,
-/* 603 */,
-/* 604 */,
-/* 605 */,
-/* 606 */,
-/* 607 */,
-/* 608 */,
-/* 609 */,
-/* 610 */,
-/* 611 */,
-/* 612 */,
-/* 613 */,
-/* 614 */,
-/* 615 */,
-/* 616 */,
-/* 617 */,
-/* 618 */,
-/* 619 */,
-/* 620 */,
-/* 621 */,
-/* 622 */,
-/* 623 */,
-/* 624 */,
-/* 625 */,
-/* 626 */,
-/* 627 */,
-/* 628 */,
-/* 629 */,
-/* 630 */,
-/* 631 */,
-/* 632 */,
-/* 633 */,
-/* 634 */,
-/* 635 */,
-/* 636 */,
-/* 637 */,
-/* 638 */,
-/* 639 */,
-/* 640 */,
-/* 641 */,
-/* 642 */,
-/* 643 */,
-/* 644 */,
-/* 645 */,
-/* 646 */,
-/* 647 */,
-/* 648 */,
-/* 649 */,
-/* 650 */,
-/* 651 */,
-/* 652 */,
-/* 653 */,
-/* 654 */,
-/* 655 */,
-/* 656 */,
-/* 657 */,
-/* 658 */,
-/* 659 */,
-/* 660 */,
-/* 661 */,
-/* 662 */,
-/* 663 */,
-/* 664 */,
-/* 665 */,
-/* 666 */,
-/* 667 */,
-/* 668 */,
-/* 669 */,
-/* 670 */,
-/* 671 */,
-/* 672 */,
-/* 673 */,
-/* 674 */,
-/* 675 */,
-/* 676 */,
-/* 677 */,
-/* 678 */,
-/* 679 */,
-/* 680 */,
-/* 681 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by Boykov D. on 10/30/2016.
-	 */
-	var core_1 = __webpack_require__(313);
-	var platform_browser_1 = __webpack_require__(331);
-	var postsPage_component_1 = __webpack_require__(384);
-	var post_mini_info_module_1 = __webpack_require__(682);
-	var post_service_1 = __webpack_require__(385);
-	var http_1 = __webpack_require__(387);
-	var PostsPageModule = (function () {
-	    function PostsPageModule() {
-	    }
-	    PostsPageModule = __decorate([
-	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule, post_mini_info_module_1.PostMiniInfoModule, http_1.HttpModule],
-	            declarations: [postsPage_component_1.PostsPageComponent],
-	            bootstrap: [postsPage_component_1.PostsPageComponent],
-	            providers: [post_service_1.PostService],
-	            exports: [postsPage_component_1.PostsPageComponent]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], PostsPageModule);
-	    return PostsPageModule;
-	}());
-	exports.PostsPageModule = PostsPageModule;
-
-
-/***/ },
-/* 682 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by Boykov D. on 11/24/2016.
-	 */
-	var platform_browser_1 = __webpack_require__(331);
-	var core_1 = __webpack_require__(313);
-	var post_mini_info_component_1 = __webpack_require__(683);
-	var PostMiniInfoModule = (function () {
-	    function PostMiniInfoModule() {
-	    }
-	    PostMiniInfoModule = __decorate([
-	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule],
-	            declarations: [post_mini_info_component_1.PostMiniInfoComponent],
-	            bootstrap: [post_mini_info_component_1.PostMiniInfoComponent],
-	            exports: [post_mini_info_component_1.PostMiniInfoComponent]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], PostMiniInfoModule);
-	    return PostMiniInfoModule;
-	}());
-	exports.PostMiniInfoModule = PostMiniInfoModule;
-
-
-/***/ },
-/* 683 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	/**
-	 * Created by Boykov D. on 11/24/2016.
-	 */
-	var core_1 = __webpack_require__(313);
-	var PostMiniInfoComponent = (function () {
-	    function PostMiniInfoComponent() {
-	    }
-	    PostMiniInfoComponent = __decorate([
-	        core_1.Component({
-	            selector: "post-mini-info",
-	            template: __webpack_require__(684),
-	            styles: [String(__webpack_require__(685))],
-	            encapsulation: core_1.ViewEncapsulation.Emulated
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], PostMiniInfoComponent);
-	    return PostMiniInfoComponent;
-	}());
-	exports.PostMiniInfoComponent = PostMiniInfoComponent;
-
-
-/***/ },
-/* 684 */
+/* 396 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>post-mini-info</div>"
-
-/***/ },
-/* 685 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(686);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(338)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./post-mini-info.style.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./post-mini-info.style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 686 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(337)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "", ""]);
-	
-	// exports
+	/**
+	 * Created by Boykov D. on 11/24/2016.
+	 */
+	"use strict";
+	var PostMiniInfo = (function () {
+	    function PostMiniInfo() {
+	    }
+	    return PostMiniInfo;
+	}());
+	exports.PostMiniInfo = PostMiniInfo;
 
 
 /***/ }

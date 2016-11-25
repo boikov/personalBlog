@@ -7,11 +7,8 @@ import { PostMiniInfo } from "../../model/post-mini-info.model";
 
 @Component({
 	           selector: 'blog-posts',
-	           template: `
-<div *ngFor="let post of posts">
- <post-mini-info></post-mini-info>
-</div>
-`
+	           template: require('./postsPage.template.html'),
+	           styles  : [String(require('./postsPage.style.scss'))]
            })
 export class PostsPageComponent {
 	public posts: PostMiniInfo[];

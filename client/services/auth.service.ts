@@ -8,9 +8,7 @@ import { IUserModel } from "../model/user.model";
 
 @Injectable()
 export class AuthService{
-	private requestService:RequestService;
-	constructor(){
-		this.requestService=new RequestService();
+	constructor(private requestService:RequestService){
 	}
 
 	singIn(user:IUserModel):Promise<IUserModel>{
