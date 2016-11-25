@@ -10,10 +10,12 @@ import { HeaderModule } from "../components/headerComponent/header.module"
 import { RouterModule } from "@angular/router";
 import { ROUTES } from "./app.routers";
 import { PostsPageModule } from "./PostsPage/postsPage.module";
+import { AuthPageModule } from "./AuthPage/authPage.module";
 
 @NgModule({
 	          imports     : [BrowserModule, PostsPageModule, FooterModule,
-	                         HeaderModule, RouterModule.forRoot(ROUTES, { useHash: false })],
+	                         HeaderModule, RouterModule.forRoot(ROUTES, { useHash: false }),
+	                         AuthPageModule],
 	          declarations: [LayoutComponent],
 	          bootstrap   : [LayoutComponent],
 	          exports     : [LayoutComponent],

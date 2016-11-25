@@ -1,0 +1,11 @@
+<div>
+	<form #signinForm="ngForm">
+		<label for="email">Email</label>
+		<input type="text" id="email">
+
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password">
+
+		<button (click)="signIn(signinForm)" >Sign in</button>
+	</form>
+</div>

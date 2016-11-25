@@ -1,14 +1,18 @@
 /**
  * Created by Boykov D. on 10/30/2016.
  */
-import { Component } from '@angular/core';
+import {
+	Component,
+	ViewEncapsulation
+} from '@angular/core';
 import { PostService } from "../../services/post.service";
 import { PostMiniInfo } from "../../model/post-mini-info.model";
 
 @Component({
-	           selector: 'blog-posts',
-	           template: require('./postsPage.template.html'),
-	           styles  : [String(require('./postsPage.style.scss'))]
+	           selector     : 'blog-posts',
+	           template     : require('./postsPage.template.html'),
+	           styles       : [String(require('./postsPage.style.scss'))],
+	           encapsulation: ViewEncapsulation.Emulated
            })
 export class PostsPageComponent {
 	public posts: PostMiniInfo[];

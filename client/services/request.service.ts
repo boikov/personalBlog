@@ -9,7 +9,9 @@ import {
 	RequestOptions
 } from '@angular/http';
 import 'rxjs/Rx';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class RequestService {
 
 	constructor(private http: Http) {
@@ -17,16 +19,18 @@ export class RequestService {
 
 	get<T>(url: string): Promise<T> {
 		return this.http.get(url)
-		           .map((res: Response)=>{ return this.extractData(res) as T;}).toPromise();
+		           .map((res: Response)=> { return this.extractData(res) as T;})
+		           .toPromise();
 	}
 
 	post<T>(url: string, data: T): Promise<T> {
 		return this.http.post(url, JSON.stringify(data), this.getJsonHeader())
-		           .map((res: Response)=>{ return this.extractData(res) as T;}).toPromise();
+		           .map((res: Response)=> { return this.extractData(res) as T;})
+		           .toPromise();
 	}
 
-	private getJsonHeader():RequestOptions{
-		let header   = new Headers({ 'Content-Type': 'application/json' });
+	private getJsonHeader(): RequestOptions {
+		let header = new Headers({ 'Content-Type': 'application/json' });
 		return new RequestOptions({ headers: header });
 	}
 
